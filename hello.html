@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Font Size and Color Changer</title>
+</head>
+<body>
+<center> <div id="text-element">TEXT-GROWING</div> </center>
+ <script>
+ var textElement = document.getElementById("text-element");
+ // Set initial font size and color
+ var fontSize = 1;
+ var color = "red";
+ var growing = true;
+ // Function to update font size and color
+ function updateText() {
+ textElement.style.fontSize = fontSize + "pt";
+ textElement.style.color = color;
+ }
+ // Function to grow or shrink the text
+ function updateSizeAndColor() {
+ if (growing) {
+ // Increase the font size
+ fontSize++;
+ textElement.textContent = "Text Growing";
+ if (fontSize === 50) {
+ growing = false;
+ color = "blue";
+ }
+ } else {
+ // Decrease the font size
+ fontSize--;
+ textElement.textContent = "Text Shrinking";
+ if (fontSize === 1) {
+ growing = true;
+ color = "red";
+
+ clearInterval(intervalId);
+ 
+ }
+ }
+ updateText();
+ }
+ // Start the interval to update the size and color
+ var intervalId = setInterval(updateSizeAndColor, 50);
+ </script>
+</body>
+</html>
